@@ -1,7 +1,29 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const button = document.querySelector("button");
+// ===============================
+// Ashish AI Studio V2.0
+// ===============================
 
-    button.addEventListener("click", function () {
-        alert("🚀 Welcome to Ashish AI Studio!\n\nAI Chat फीचर पर अभी काम चल रहा है। जल्द ही उपलब्ध होगा।");
+document.addEventListener("DOMContentLoaded", () => {
+
+    const startButton = document.getElementById("startBtn");
+
+    startButton.addEventListener("click", () => {
+        alert(
+`🚀 Welcome to Ashish AI Studio!
+
+यह Version 1.0 है।
+
+जल्द ही इसमें उपलब्ध होंगे:
+
+🤖 AI Chat
+🎨 AI Image Generator
+🎬 AI Video Generator
+🎤 AI Voice Assistant
+🌍 Language Translator
+
+धन्यवाद!`
+        );
     });
+
+    console.log("Ashish AI Studio Loaded Successfully.");
+
 });
