@@ -1,1 +1,71 @@
+/* ==========================================
+   Project : Ashish AI Studio
+   Version : V2.0
+   File : image.css
+========================================== */
 
+.image-container{
+    max-width:1000px;
+    margin:30px auto;
+    background:#111827;
+    border-radius:15px;
+    padding:30px;
+    box-shadow:0 0 20px rgba(0,0,0,.4);
+}
+
+.image-title{
+    text-align:center;
+    color:#60a5fa;
+    margin-bottom:20px;
+}
+
+.image-input{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    margin-bottom:20px;
+}
+
+.generate-btn{
+    width:100%;
+    padding:15px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.generate-btn:hover{
+    background:#1d4ed8;
+}
+
+.image-preview{
+    margin-top:30px;
+    height:350px;
+    background:#0f172a;
+    border:2px dashed #2563eb;
+    border-radius:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#94a3b8;
+    text-align:center;
+    padding:20px;
+}
+
+@media(max-width:768px){
+
+.image-container{
+    padding:20px;
+}
+
+.image-preview{
+    height:250px;
+}
+
+}
