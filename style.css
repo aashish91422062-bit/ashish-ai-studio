@@ -133,3 +133,96 @@ ul{
 li{
     margin-bottom:10px;
 }
+
+/* ==========================================
+   Part : 2/4
+   Buttons, Forms & Cards
+========================================== */
+
+/* Buttons */
+
+button{
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    padding:14px 28px;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+}
+
+/* Input */
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:15px;
+    border:2px solid #334155;
+    border-radius:10px;
+    background:#0f172a;
+    color:white;
+    font-size:16px;
+    margin-top:10px;
+    margin-bottom:15px;
+    outline:none;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:#2563eb;
+}
+
+/* Card */
+
+.card{
+    background:#111827;
+    padding:25px;
+    border-radius:15px;
+    margin:20px 0;
+    box-shadow:0 0 15px rgba(0,0,0,.3);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+/* Grid */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+/* Dashboard Box */
+
+.dashboard-box{
+    background:#111827;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    transition:.3s;
+}
+
+.dashboard-box:hover{
+    background:#1e293b;
+}
+
+.dashboard-box h3{
+    margin-bottom:10px;
+    color:#60a5fa;
+}
+
+.dashboard-box p{
+    color:#cbd5e1;
+   }
