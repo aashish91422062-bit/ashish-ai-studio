@@ -336,3 +336,112 @@ select:focus{
 .dashboard-item p{
     color:#cbd5e1;
 }
+
+/* ==========================================
+   Part : 4/4
+   Footer, Responsive & Animations
+========================================== */
+
+/* Footer */
+
+footer{
+    background:#111827;
+    text-align:center;
+    padding:25px;
+    margin-top:50px;
+    color:#cbd5e1;
+}
+
+/* Smooth Scroll */
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* Selection Color */
+
+::selection{
+    background:#2563eb;
+    color:#ffffff;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0f172a;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#2563eb;
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#1d4ed8;
+}
+
+/* Animation */
+
+.fade-in{
+    animation:fadeIn .8s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* Mobile Responsive */
+
+@media(max-width:768px){
+
+header h1{
+    font-size:28px;
+}
+
+header p{
+    font-size:16px;
+}
+
+nav{
+    flex-direction:column;
+}
+
+nav a{
+    width:100%;
+    text-align:center;
+}
+
+section{
+    padding:20px;
+}
+
+button{
+    width:100%;
+}
+
+.chat-box{
+    height:300px;
+}
+
+.image-preview,
+.video-preview{
+    min-height:220px;
+}
+
+}
+
+/* ===== End of style.css V2.0 FINAL ===== */
