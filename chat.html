@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Ashish AI Studio | AI Chat</title>
 
     <link rel="stylesheet" href="style.css">
@@ -13,51 +12,43 @@
 <body>
 
 <header>
-
-    <h1>🤖 Ashish AI Studio</h1>
-
-    <p>AI Chat Platform</p>
-
+    <div class="container">
+        <h1>🤖 Ashish AI Studio</h1>
+        <p>AI Chat Assistant</p>
+    </div>
 </header>
 
 <nav>
-
-    <a href="index.html">Home</a>
-
-    <a href="chat.html">AI Chat</a>
-
-    <a href="image.html">AI Image</a>
-
-    <a href="video.html">AI Video</a>
-
-    <a href="voice.html">AI Voice</a>
-
-    <a href="about.html">About</a>
-
-    <a href="contact.html">Contact</a>
-
+    <a href="index.html">🏠 Home</a>
+    <a href="chat.html">🤖 AI Chat</a>
+    <a href="image.html">🎨 AI Image</a>
+    <a href="video.html">🎬 AI Video</a>
+    <a href="voice.html">🎤 AI Voice</a>
+    <a href="dashboard.html">📊 Dashboard</a>
+    <a href="login.html">🔐 Login</a>
+    <a href="about.html">ℹ️ About</a>
+    <a href="contact.html">📞 Contact</a>
 </nav>
 
-<main>
+<main class="container">
 
-<section>
+<section class="fade-in">
 
-<h2>AI Chat</h2>
+<h2>AI Chat Assistant</h2>
 
 <p>
-Welcome to Ashish AI Studio AI Chat.
+Ask any question and receive intelligent AI responses.
+This page is ready for future AI API integration.
 </p>
 
-<br>
+<div class="chat-container">
 
-<div style="background:#111827;padding:20px;border-radius:12px;min-height:350px;">
+<div class="chat-box">
 
-<p>
-🤖 AI Assistant:
-<br><br>
-Hello Ashish!
+<div class="ai-message">
+👋 Hello! Welcome to Ashish AI Studio.
 How can I help you today?
-</p>
+</div>
 
 </div>
 
@@ -65,16 +56,45 @@ How can I help you today?
 
 <input
 type="text"
-placeholder="Type your message..."
-style="width:100%;padding:15px;border-radius:10px;border:none;font-size:16px;">
+placeholder="Type your message here...">
 
-<br><br>
+<br>
 
-<button>
-
+<button class="ai-btn">
 Send Message
-
 </button>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Popular AI Tasks</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>📝 Write Articles</h3>
+<p>Create blogs, stories and reports.</p>
+</div>
+
+<div class="card">
+<h3>🌍 Translate Languages</h3>
+<p>Translate text into multiple languages.</p>
+</div>
+
+<div class="card">
+<h3>💻 Coding Help</h3>
+<p>Generate and explain programming code.</p>
+</div>
+
+<div class="card">
+<h3>📚 Study Assistant</h3>
+<p>Learn faster with AI guidance.</p>
+</div>
+
+</div>
 
 </section>
 
@@ -82,16 +102,13 @@ Send Message
 
 <footer>
 
-<p>
+<p>© 2026 Ashish AI Studio. All Rights Reserved.</p>
 
-© 2026 Ashish AI Studio
-
-</p>
+<p>Developed by Ashish Kumar</p>
 
 </footer>
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
