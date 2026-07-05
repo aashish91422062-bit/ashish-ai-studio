@@ -1,29 +1,38 @@
-// ===============================
-// Ashish AI Studio V2.0
-// ===============================
+/* ==========================================
+   Ashish AI Studio
+   Version : V2.0 FINAL
+   File : script.js
+   Part : 1/4
+========================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
-    const startButton = document.getElementById("startBtn");
+console.log("Ashish AI Studio V2.0 Loaded");
 
-    startButton.addEventListener("click", () => {
-        alert(
-`🚀 Welcome to Ashish AI Studio!
+/* Welcome Message */
 
-यह Version 1.0 है।
+const pageTitle = document.title;
 
-जल्द ही इसमें उपलब्ध होंगे:
+console.log("Current Page : " + pageTitle);
 
-🤖 AI Chat
-🎨 AI Image Generator
-🎬 AI Video Generator
-🎤 AI Voice Assistant
-🌍 Language Translator
+/* All Buttons */
 
-धन्यवाद!`
-        );
-    });
+const buttons = document.querySelectorAll("button");
 
-    console.log("Ashish AI Studio Loaded Successfully.");
+buttons.forEach(function(button){
+
+button.addEventListener("mouseenter",function(){
+
+button.style.transform="scale(1.03)";
+
+});
+
+button.addEventListener("mouseleave",function(){
+
+button.style.transform="scale(1)";
+
+});
+
+});
 
 });
