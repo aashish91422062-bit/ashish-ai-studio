@@ -36,3 +36,60 @@ button.style.transform="scale(1)";
 });
 
 });
+
+/* ==========================================
+   Part : 2/4
+   Navigation & Dashboard
+========================================== */
+
+/* Navigation */
+
+function goTo(page){
+    window.location.href = page;
+}
+
+/* Dashboard Buttons */
+
+const dashboardButtons = document.querySelectorAll(".dashboard-btn");
+
+dashboardButtons.forEach(function(btn){
+
+    btn.addEventListener("click", function(){
+
+        const page = btn.getAttribute("data-page");
+
+        if(page){
+            goTo(page);
+        }
+
+    });
+
+});
+
+/* Common Buttons */
+
+const homeBtn = document.getElementById("homeBtn");
+
+if(homeBtn){
+
+    homeBtn.addEventListener("click",function(){
+
+        goTo("index.html");
+
+    });
+
+}
+
+/* Contact Button */
+
+const contactBtn = document.getElementById("contactBtn");
+
+if(contactBtn){
+
+    contactBtn.addEventListener("click",function(){
+
+        goTo("contact.html");
+
+    });
+
+}
