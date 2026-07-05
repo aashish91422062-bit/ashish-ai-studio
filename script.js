@@ -93,3 +93,76 @@ if(contactBtn){
     });
 
 }
+
+/* ==========================================
+   Part : 3/4
+   Forms & User Actions
+========================================== */
+
+/* Login Form */
+
+const loginForm = document.getElementById("loginForm");
+
+if(loginForm){
+
+loginForm.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+alert("Login feature will be connected soon.");
+
+window.location.href="dashboard.html";
+
+});
+
+}
+
+/* Signup Form */
+
+const signupForm = document.getElementById("signupForm");
+
+if(signupForm){
+
+signupForm.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+alert("Account created successfully.");
+
+window.location.href="login.html";
+
+});
+
+}
+
+/* Contact Form */
+
+const contactForm = document.getElementById("contactForm");
+
+if(contactForm){
+
+contactForm.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+alert("Your message has been received.");
+
+contactForm.reset();
+
+});
+
+}
+
+/* AI Buttons */
+
+const aiButtons=document.querySelectorAll(".ai-btn");
+
+aiButtons.forEach(function(button){
+
+button.addEventListener("click",function(){
+
+alert("This AI feature will be available after API integration.");
+
+});
+
+});
