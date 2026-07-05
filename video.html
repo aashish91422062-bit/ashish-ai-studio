@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashish AI Studio | AI Video</title>
+    <title>Ashish AI Studio | AI Video Generator</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,50 +12,115 @@
 <body>
 
 <header>
-    <h1>🎬 Ashish AI Studio</h1>
-    <p>AI Video Generator</p>
+    <div class="container">
+        <h1>🎬 Ashish AI Studio</h1>
+        <p>AI Video Generator</p>
+    </div>
 </header>
 
 <nav>
-    <a href="index.html">Home</a>
-    <a href="chat.html">AI Chat</a>
-    <a href="image.html">AI Image</a>
-    <a href="video.html">AI Video</a>
-    <a href="voice.html">AI Voice</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html">🏠 Home</a>
+    <a href="chat.html">🤖 AI Chat</a>
+    <a href="image.html">🎨 AI Image</a>
+    <a href="video.html">🎬 AI Video</a>
+    <a href="voice.html">🎤 AI Voice</a>
+    <a href="dashboard.html">📊 Dashboard</a>
+    <a href="login.html">🔐 Login</a>
+    <a href="about.html">ℹ️ About</a>
+    <a href="contact.html">📞 Contact</a>
 </nav>
 
-<main>
+<main class="container">
 
-<section>
+<section class="fade-in">
 
-<h2>Create AI Video</h2>
+<h2>AI Video Generator</h2>
 
-<p>Describe the video you want to generate.</p>
+<p>
+Describe the video you want to generate. AI video generation will be connected in a future update.
+</p>
 
 <br>
 
 <input
 type="text"
-placeholder="Example: A flying car in a futuristic city"
-style="width:100%;padding:15px;border:none;border-radius:10px;font-size:16px;">
+placeholder="Example: A cinematic drone shot of mountains at sunrise">
 
-<br><br>
+<br>
 
-<button>
+<div class="video-preview">
+
+<p>🎬 AI Video Preview</p>
+
+</div>
+
+<br>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Generate Video</h3>
+
+<p>Create a new AI video from your prompt.</p>
+
+<br>
+
+<button class="ai-btn">
 Generate Video
 </button>
 
-<br><br>
+</div>
 
-<div style="background:#111827;padding:20px;border-radius:12px;min-height:300px;display:flex;align-items:center;justify-content:center;">
+<div class="card">
 
-<p>
-🎥 Your generated video will appear here.
-</p>
+<h3>Download</h3>
+
+<p>Download your generated video (Coming Soon).</p>
+
+<br>
+
+<button disabled>
+Download
+</button>
 
 </div>
+
+<div class="card">
+
+<h3>Clear</h3>
+
+<p>Clear the prompt and preview area.</p>
+
+<br>
+
+<button>
+Clear
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Video Prompt Tips</h2>
+
+<ul>
+
+<li>✅ Describe the scene clearly.</li>
+
+<li>✅ Mention camera movement.</li>
+
+<li>✅ Add lighting details.</li>
+
+<li>✅ Mention animation style.</li>
+
+<li>✅ Keep prompts simple and detailed.</li>
+
+</ul>
 
 </section>
 
@@ -63,11 +128,14 @@ Generate Video
 
 <footer>
 
-<p>© 2026 Ashish AI Studio</p>
+<p>© 2026 Ashish AI Studio. All Rights Reserved.</p>
+
+<p>Developed by Ashish Kumar</p>
 
 </footer>
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
