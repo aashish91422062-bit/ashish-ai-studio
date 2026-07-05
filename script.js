@@ -166,3 +166,62 @@ alert("This AI feature will be available after API integration.");
 });
 
 });
+
+/* ==========================================
+   Part : 4/4
+   Utilities & Final
+========================================== */
+
+/* Loading Effect */
+
+window.addEventListener("load", function () {
+    document.body.classList.add("fade-in");
+});
+
+/* Smooth Scroll */
+
+document.querySelectorAll('a[href^="#"]').forEach(function(link){
+
+    link.addEventListener("click",function(e){
+
+        e.preventDefault();
+
+        const target=document.querySelector(this.getAttribute("href"));
+
+        if(target){
+
+            target.scrollIntoView({
+                behavior:"smooth"
+            });
+
+        }
+
+    });
+
+});
+
+/* Future Dark Mode */
+
+function toggleDarkMode(){
+
+    document.body.classList.toggle("dark-mode");
+
+}
+
+/* Future Notification */
+
+function showNotification(message){
+
+    alert(message);
+
+}
+
+/* Version */
+
+console.log("Ashish AI Studio");
+console.log("Version : V2.0 FINAL");
+console.log("Status : Ready for AI Integration");
+
+/* ==========================================
+   End of script.js V2.0 FINAL
+========================================== */
