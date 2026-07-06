@@ -37,9 +37,22 @@ console.log(data);
 if (data.error) {
   return res.status(500).json(data);
 }
-    const reply =
-      data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-      "No response from Gemini.";
+    if (!response.ok) {
+  return res.status(response.status).json({
+    success: false,
+    reply: JSON.stringify(data)
+  });
+}
+
+const reply =
+  data.candidates?.[0]?.content?.parts?.[0]?.text;
+
+if (!reply) {
+  return res.status(500).json({
+    success: false,
+    reply: JSON.stringify(data)
+  });
+}
 
     res.status(200).json({
       success: true,
