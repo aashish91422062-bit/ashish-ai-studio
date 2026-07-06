@@ -1,6 +1,6 @@
 /* ==========================================
    Ashish AI Studio
-   Version : V2.1 FINAL
+   Version : V3.0
    File : chat.js
 ========================================== */
 
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const chatBox = document.getElementById("chatBox");
 
     if (!chatForm || !userInput || !chatBox) {
-        console.log("Chat system not ready.");
+        console.log("Chat page not ready.");
         return;
     }
 
@@ -28,41 +28,59 @@ document.addEventListener("DOMContentLoaded", function () {
         chatBox.scrollTop = chatBox.scrollHeight;
     }
 
-    chatForm.addEventListener("submit", function (e) {
+    chatForm.addEventListener("submit", async function (e) {
 
         e.preventDefault();
 
         const message = userInput.value.trim();
 
-        if (message === "") {
-            alert("Please enter a message.");
-            return;
-        }
+        if (message === "") return;
 
         addMessage("👤 " + message, "user-message");
 
         userInput.value = "";
 
         const typing = document.createElement("div");
-
         typing.className = "ai-message";
-
         typing.innerHTML = "🤖 AI is typing...";
-
         chatBox.appendChild(typing);
 
         chatBox.scrollTop = chatBox.scrollHeight;
 
-        setTimeout(function () {
+        try {
+
+            const response = await fetch("/api/chat", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    message: message
+                })
+
+            });
+
+            const data = await response.json();
+
+            typing.remove();
+
+            addMessage("🤖 " + (data.reply || "No reply received."), "ai-message");
+
+        } catch (error) {
 
             typing.remove();
 
             addMessage(
-                "🤖 Thank you for your message.<br><br>Real AI Chat will be connected in Version 3.0.",
+                "❌ Unable to connect to AI server.",
                 "ai-message"
             );
 
-        }, 1500);
+            console.error(error);
+
+        }
 
     });
 
