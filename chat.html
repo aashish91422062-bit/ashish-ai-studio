@@ -1,174 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Ashish AI Studio | AI Chat</title>
-
-<link rel="stylesheet" href="style.css">
-
+<title>Ashish AI Chat</title>
+<link rel="stylesheet" href="chat.css">
 </head>
 
 <body>
 
-<header>
+<h2>🤖 Ashish AI Chat</h2>
 
-<div class="container">
+<div id="box"></div>
 
-<h1>🤖 Ashish AI Studio</h1>
-
-<p>AI Chat Assistant</p>
-
-</div>
-
-</header>
-
-<nav>
-
-<a href="index.html">🏠 Home</a>
-
-<a href="chat.html">🤖 AI Chat</a>
-
-<a href="image.html">🎨 AI Image</a>
-
-<a href="video.html">🎬 AI Video</a>
-
-<a href="voice.html">🎤 AI Voice</a>
-
-<a href="dashboard.html">📊 Dashboard</a>
-
-<a href="login.html">🔐 Login</a>
-
-<a href="about.html">ℹ️ About</a>
-
-<a href="contact.html">📞 Contact</a>
-
-</nav>
-
-<main class="container">
-
-<section class="fade-in">
-
-<h2>💬 AI Chat Assistant</h2>
-
-<p>
-
-Ask anything and get intelligent AI answers powered by Gemini.
-
-</p>
-
-<div class="chat-container">
-
-<div
-class="chat-box"
-id="chatBox">
-
-<div class="ai-message">
-
-👋 Hello! Welcome to Ashish AI Studio.
-
-<br><br>
-
-How can I help you today?
-
-</div>
-
-</div>
-
-<form id="chatForm">
-
-<input
-id="userInput"
-type="text"
-placeholder="Type your message here..."
-required>
-
-<br><br>
-
-<button
-type="submit"
-class="ai-btn">
-
-🚀 Send Message
-
-</button>
-
-</form>
-
-</div>
-
-</section>
-
-<section>
-
-<h2>🔥 Popular AI Tasks</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>📝 Write Articles</h3>
-<p>Create blogs, stories and reports instantly with AI.</p>
-</div>
-
-<div class="card">
-<h3>🌍 Translate Languages</h3>
-<p>Translate text into multiple languages with AI.</p>
-</div>
-
-<div class="card">
-<h3>💻 Coding Help</h3>
-<p>Generate, debug and explain programming code.</p>
-</div>
-
-<div class="card">
-<h3>📚 Study Assistant</h3>
-<p>Learn faster with your personal AI teacher.</p>
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<h2>✨ Features</h2>
-
-<ul>
-
-<li>✅ AI Chat Assistant</li>
-
-<li>✅ Fast AI Responses</li>
-
-<li>✅ Mobile Friendly Design</li>
-
-<li>✅ Gemini AI Integration Ready</li>
-
-<li>✅ Secure Chat System</li>
-
-</ul>
-
-</section>
-
-</main>
-
-<footer>
-
-<p>
-© 2026 Ashish AI Studio. All Rights Reserved.
-</p>
-
-<p>
-Developed by Ashish Kumar
-</p>
-
-</footer>
+<input id="msg" placeholder="Ask Ashish AI...">
+<button onclick="send()">Send</button>
 
 <script src="chat.js"></script>
 
 </body>
-    </html>    
+</html>
