@@ -1,87 +1,18 @@
-/* ==========================================
-   Ashish AI Studio
-   Version : V3.0
-   File : chat.js
-========================================== */
+async function send(){
 
-document.addEventListener("DOMContentLoaded", function () {
+  let msg=document.getElementById("msg").value;
 
-    const chatForm = document.getElementById("chatForm");
-    const userInput = document.getElementById("userInput");
-    const chatBox = document.getElementById("chatBox");
+  document.getElementById("box").innerHTML +=
+  "<div class='user'>👤 You: "+msg+"</div>";
 
-    if (!chatForm || !userInput || !chatBox) {
-        console.log("Chat page not ready.");
-        return;
-    }
+  let res=await fetch("api/chat",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({message:msg})
+  });
 
-    function addMessage(message, type) {
+  let data=await res.json();
 
-        const div = document.createElement("div");
-
-        div.className = type;
-
-        div.innerHTML = message;
-
-        chatBox.appendChild(div);
-
-        chatBox.scrollTop = chatBox.scrollHeight;
-    }
-
-    chatForm.addEventListener("submit", async function (e) {
-
-        e.preventDefault();
-
-        const message = userInput.value.trim();
-
-        if (message === "") return;
-
-        addMessage("👤 " + message, "user-message");
-
-        userInput.value = "";
-
-        const typing = document.createElement("div");
-        typing.className = "ai-message";
-        typing.innerHTML = "🤖 AI is typing...";
-        chatBox.appendChild(typing);
-
-        chatBox.scrollTop = chatBox.scrollHeight;
-
-        try {
-
-            const response = await fetch("/api/chat", {
-
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify({
-                    message: message
-                })
-
-            });
-
-            const data = await response.json();
-
-            typing.remove();
-
-            addMessage("🤖 " + (data.reply || "No reply received."), "ai-message");
-
-        } catch (error) {
-
-            typing.remove();
-
-            addMessage(
-                "❌ Unable to connect to AI server.",
-                "ai-message"
-            );
-
-            console.error(error);
-
-        }
-
-    });
-
-});
+  document.getElementById("box").innerHTML +=
+  "<div class='ai'>🤖 Ashish AI: "+data.reply+"</div>";
+}
