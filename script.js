@@ -225,3 +225,20 @@ console.log("Status : Ready for AI Integration");
 /* ==========================================
    End of script.js V2.0 FINAL
 ========================================== */
+
+/* ==========================================
+   Mobile Menu V3.0
+========================================== */
+
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+if (menuBtn && mobileMenu) {
+
+    menuBtn.addEventListener("click", function () {
+
+        mobileMenu.classList.toggle("show");
+
+    });
+
+}
