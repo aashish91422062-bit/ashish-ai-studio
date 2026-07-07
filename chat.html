@@ -1,21 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<title>Ashish AI Chat</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ashish AI Studio - Chat</title>
+
 <link rel="stylesheet" href="chat.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 </head>
 
 <body>
 
-<h2>🤖 Ashish AI Chat</h2>
+<header class="header">
 
-<div id="box"></div>
+<button id="menuBtn">
+<i class="fa-solid fa-bars"></i>
+</button>
 
-<input id="msg" placeholder="Ask Ashish AI...">
-<button onclick="send()">Send</button>
+<div class="logo">
+
+🤖 Ashish AI Studio
+
+</div>
+
+<button id="profileBtn">
+
+<i class="fa-solid fa-user"></i>
+
+</button>
+
+</header>
+
+<div id="chatBox" class="chat-box">
+
+<div class="ai-message">
+
+👋 Welcome to Ashish AI Studio
+
+<br><br>
+
+How can I help you today?
+
+</div>
+
+</div>
+
+<form id="chatForm" class="chat-input">
+
+<button type="button" id="voiceBtn">
+
+<i class="fa-solid fa-microphone"></i>
+
+</button>
+
+<input
+type="text"
+id="userInput"
+placeholder="Ask anything..."
+autocomplete="off"
+required>
+
+<button type="submit">
+
+<i class="fa-solid fa-paper-plane"></i>
+
+</button>
+
+</form>
 
 <script src="chat.js"></script>
 
 </body>
+
 </html>
