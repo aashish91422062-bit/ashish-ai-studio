@@ -8,6 +8,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function addMessage(text, type) {
 
+    const row = document.createElement("div");
+    row.className = (type === "ai-message") ? "ai-row" : "user-row";
+
+    const avatar = document.createElement("div");
+    avatar.className = "avatar";
+    avatar.innerHTML = (type === "ai-message") ? "🤖" : "👤";
+
+    const msg = document.createElement("div");
+    msg.className = "message";
+    msg.innerHTML = text;
+
+    row.appendChild(avatar);
+    row.appendChild(msg);
+
+    chatBox.appendChild(row);
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
         const div = document.createElement("div");
         div.className = type;
         div.innerHTML = text;
