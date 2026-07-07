@@ -18,7 +18,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const msg = document.createElement("div");
     msg.className = "message";
     msg.innerHTML = text;
+if(type === "ai-message"){
 
+    const copyBtn = document.createElement("button");
+
+    copyBtn.className = "copy-btn";
+
+    copyBtn.innerHTML = "📋 Copy";
+
+    copyBtn.onclick = () => {
+
+        navigator.clipboard.writeText(msg.innerText);
+
+        copyBtn.innerHTML = "✅ Copied";
+
+        setTimeout(()=>{
+            copyBtn.innerHTML="📋 Copy";
+        },1500);
+
+    };
+
+    msg.appendChild(document.createElement("br"));
+
+    msg.appendChild(copyBtn);
+
+}
     row.appendChild(avatar);
     row.appendChild(msg);
 
