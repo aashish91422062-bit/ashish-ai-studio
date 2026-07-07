@@ -2,15 +2,14 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ashish AI Studio - Chat</title>
+<title>Ashish AI Studio - AI Chat</title>
 
 <link rel="stylesheet" href="chat.css">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet"
@@ -22,7 +21,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <header class="header">
 
-<button id="menuBtn">
+<button id="menuBtn" class="icon-btn">
 <i class="fa-solid fa-bars"></i>
 </button>
 
@@ -31,55 +30,54 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 <div class="logo-icon">🤖</div>
 
 <div class="logo-text">
-
-<h3>Ashish AI Studio</h3>
-
-<p>AI Assistant Online</p>
-
+<h2>Ashish AI Studio</h2>
+<p>AI Assistant</p>
 </div>
 
 </div>
 
-<button id="profileBtn">
+<div class="header-right">
 
+<button id="clearChatBtn" class="icon-btn">
+<i class="fa-solid fa-trash"></i>
+</button>
+
+<button id="profileBtn" class="icon-btn">
 <i class="fa-solid fa-user"></i>
+</button>
 
-</button>
-<button id="clearChatBtn">
-    <i class="fa-solid fa-trash"></i>
-</button>
+</div>
+
 </header>
 
-<div id="chatBox" class="chat-box">
+<main id="chatBox" class="chat-box">
 
-<div class="ai-message">
+<div class="welcome">
 
-👋 Welcome to Ashish AI Studio
+<h2>👋 Welcome Ashish</h2>
 
-<br><br>
-
-How can I help you today?
+<p>Ask anything to your AI Assistant.</p>
 
 </div>
 
-</div>
+</main>
 
 <form id="chatForm" class="chat-input">
 
-<button type="button" id="voiceBtn">
+<button type="button" id="voiceBtn" class="circle-btn">
 
 <i class="fa-solid fa-microphone"></i>
 
 </button>
 
 <input
-type="text"
 id="userInput"
-placeholder="Ask anything..."
+type="text"
+placeholder="Type your message..."
 autocomplete="off"
 required>
 
-<button type="submit">
+<button type="submit" id="sendBtn" class="circle-btn">
 
 <i class="fa-solid fa-paper-plane"></i>
 
