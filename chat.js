@@ -1,7 +1,12 @@
 // Ashish AI Studio V4
 
 document.addEventListener("DOMContentLoaded", () => {
+// Load old chat
+const oldChat = localStorage.getItem("ashish_chat");
 
+if(oldChat){
+    chatBox.innerHTML = oldChat;
+}
     const chatForm = document.getElementById("chatForm");
     const userInput = document.getElementById("userInput");
     const chatBox = document.getElementById("chatBox");
@@ -83,7 +88,7 @@ if(type === "ai-message"){
         chatBox.appendChild(typing);
 
         chatBox.scrollTop = chatBox.scrollHeight;
-
+localStorage.setItem("ashish_chat", chatBox.innerHTML);
         try {
 
             const response = await fetch("/api/chat", {
