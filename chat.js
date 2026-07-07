@@ -1,18 +1,78 @@
-async function send(){
+// Ashish AI Studio V4
 
-  let msg=document.getElementById("msg").value;
+document.addEventListener("DOMContentLoaded", () => {
 
-  document.getElementById("box").innerHTML +=
-  "<div class='user'>👤 You: "+msg+"</div>";
+    const chatForm = document.getElementById("chatForm");
+    const userInput = document.getElementById("userInput");
+    const chatBox = document.getElementById("chatBox");
 
-  let res=await fetch("api/chat",{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({message:msg})
-  });
+    function addMessage(text, type) {
 
-  let data=await res.json();
+        const div = document.createElement("div");
+        div.className = type;
+        div.innerHTML = text;
 
-  document.getElementById("box").innerHTML +=
-  "<div class='ai'>🤖 Ashish AI: "+data.reply+"</div>";
-}
+        chatBox.appendChild(div);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    chatForm.addEventListener("submit", async (e) => {
+
+        e.preventDefault();
+
+        const message = userInput.value.trim();
+
+        if (!message) return;
+
+        addMessage("👤 " + message, "user-message");
+
+        userInput.value = "";
+
+        const typing = document.createElement("div");
+        typing.className = "ai-message";
+        typing.innerHTML = "🤖 AI is typing...";
+        chatBox.appendChild(typing);
+
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        try {
+
+            const response = await fetch("/api/chat", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    message
+                })
+
+            });
+
+            const data = await response.json();
+
+            typing.remove();
+
+            addMessage(
+                "🤖 " + (data.reply || "No reply received."),
+                "ai-message"
+            );
+
+        } catch (err) {
+
+            typing.remove();
+
+            addMessage(
+                "❌ Unable to connect to AI Server.",
+                "ai-message"
+            );
+
+            console.error(err);
+
+        }
+
+    });
+
+});
