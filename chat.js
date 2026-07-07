@@ -1,94 +1,71 @@
-// Ashish AI Studio V4
+// Ashish AI Studio V4 Final
 
 document.addEventListener("DOMContentLoaded", () => {
-// Load old chat
-const oldChat = localStorage.getItem("ashish_chat");
 
-if(oldChat){
-    chatBox.innerHTML = oldChat;
-}
     const chatForm = document.getElementById("chatForm");
     const userInput = document.getElementById("userInput");
     const chatBox = document.getElementById("chatBox");
+    const clearBtn = document.getElementById("clearChatBtn");
 
-    function addMessage(text, type) {
+    // Load saved chat
+    const savedChat = localStorage.getItem("ashish_chat");
 
-    const row = document.createElement("div");
-    row.className = (type === "ai-message") ? "ai-row" : "user-row";
-
-    const avatar = document.createElement("div");
-    avatar.className = "avatar";
-    avatar.innerHTML = (type === "ai-message") ? "🤖" : "👤";
-
-    const msg = document.createElement("div");
-    msg.className = "message";
-    msg.innerHTML = text;
-if(type === "ai-message"){
-
-    const copyBtn = document.createElement("button");
-
-    copyBtn.className = "copy-btn";
-
-    copyBtn.innerHTML = "📋 Copy";
-
-    copyBtn.onclick = () => {
-
-        navigator.clipboard.writeText(msg.innerText);
-
-        copyBtn.innerHTML = "✅ Copied";
-
-        setTimeout(()=>{
-            copyBtn.innerHTML="📋 Copy";
-        },1500);
-
-    };
-
-    msg.appendChild(document.createElement("br"));
-
-    msg.appendChild(copyBtn);
-
-}
-    row.appendChild(avatar);
-    row.appendChild(msg);
-
-    chatBox.appendChild(row);
-
-    chatBox.scrollTop = chatBox.scrollHeight;
+    if (savedChat) {
+        chatBox.innerHTML = savedChat;
     }
 
-        const div = document.createElement("div");
-        div.className = type;
-        div.innerHTML = text;
+    function saveChat() {
+        localStorage.setItem("ashish_chat", chatBox.innerHTML);
+    }
 
-        chatBox.appendChild(div);
+    function addMessage(text, sender) {
+
+        const row = document.createElement("div");
+        row.className = sender === "user" ? "user-row" : "ai-row";
+
+        const avatar = document.createElement("div");
+        avatar.className = "avatar";
+        avatar.innerHTML = sender === "user" ? "👤" : "🤖";
+
+        const message = document.createElement("div");
+        message.className = "message";
+        message.innerHTML = text;
+
+        row.appendChild(avatar);
+        row.appendChild(message);
+
+        chatBox.appendChild(row);
+
         chatBox.scrollTop = chatBox.scrollHeight;
+
+        saveChat();
     }
 
     chatForm.addEventListener("submit", async (e) => {
 
         e.preventDefault();
 
-        const message = userInput.value.trim();
+        const msg = userInput.value.trim();
 
-        if (!message) return;
+        if (!msg) return;
 
-        addMessage("👤 " + message, "user-message");
+        addMessage(msg, "user");
 
         userInput.value = "";
 
         const typing = document.createElement("div");
-        typing.className = "ai-message";
+
+        typing.className = "ai-row";
+
         typing.innerHTML = `
-<div class="typing">
-<span></span>
-<span></span>
-<span></span>
-</div>
-`;
+            <div class="avatar">🤖</div>
+            <div class="message">Typing...</div>
+        `;
+
         chatBox.appendChild(typing);
 
         chatBox.scrollTop = chatBox.scrollHeight;
-localStorage.setItem("ashish_chat", chatBox.innerHTML);
+
         try {
 
             const response = await fetch("/api/chat", {
@@ -96,11 +73,15 @@ localStorage.setItem("ashish_chat", chatBox.innerHTML);
                 method: "POST",
 
                 headers: {
+
                     "Content-Type": "application/json"
+
                 },
 
                 body: JSON.stringify({
-                    message
+
+                    message: msg
+
                 })
 
             });
@@ -109,24 +90,28 @@ localStorage.setItem("ashish_chat", chatBox.innerHTML);
 
             typing.remove();
 
-            addMessage(
-                "🤖 " + (data.reply || "No reply received."),
-                "ai-message"
-            );
+            addMessage(data.reply || "No reply received.", "ai");
 
         } catch (err) {
 
             typing.remove();
 
-            addMessage(
-                "❌ Unable to connect to AI Server.",
-                "ai-message"
-            );
-
-            console.error(err);
+            addMessage("❌ Unable to connect to AI.", "ai");
 
         }
 
     });
+
+    clearBtn.onclick = () => {
+
+        if (confirm("Delete all chats?")) {
+
+            chatBox.innerHTML = "";
+
+            localStorage.removeItem("ashish_chat");
+
+        }
+
+    };
 
 });
