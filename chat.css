@@ -73,6 +73,11 @@ padding:12px;
 background:#111827;
 border-top:1px solid #1f2937;
 gap:10px;
+
+position:fixed;
+left:0;
+right:0;
+bottom:30px;
 }
 
 .chat-input input{
