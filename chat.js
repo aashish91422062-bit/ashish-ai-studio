@@ -73,7 +73,13 @@ if(type === "ai-message"){
 
         const typing = document.createElement("div");
         typing.className = "ai-message";
-        typing.innerHTML = "🤖 AI is typing...";
+        typing.innerHTML = `
+<div class="typing">
+<span></span>
+<span></span>
+<span></span>
+</div>
+`;
         chatBox.appendChild(typing);
 
         chatBox.scrollTop = chatBox.scrollHeight;
