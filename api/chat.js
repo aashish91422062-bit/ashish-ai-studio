@@ -1,51 +1,92 @@
-import fs from "fs";
+export default async function handler(req, res) {
 
-const file="./data/knowledge.json";
-
-function loadDB(){
-  if(!fs.existsSync(file)) return {};
-  return JSON.parse(fs.readFileSync(file));
-}
-
-function saveDB(db){
-  fs.writeFileSync(file, JSON.stringify(db,null,2));
-}
-
-async function gemini(msg){
-
-  const prompt="You are Ashish AI. Always respond clearly and helpfully. User: "+msg;
-
-  const res=await fetch(
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key="+process.env.GEMINI_API_KEY,
-    {
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({
-        contents:[{parts:[{text:prompt}]}]
-      })
-    }
-  );
-
-  const data=await res.json();
-
-  return data?.candidates?.[0]?.content?.parts?.[0]?.text || "No response";
-}
-
-export default async function handler(req,res){
-
-  let {message}=req.body;
-  let key=message.toLowerCase();
-
-  let db=loadDB();
-
-  if(db[key]){
-    return res.json({reply:db[key]});
+  if (req.method !== "POST") {
+    return res.status(405).json({
+      reply: "Method Not Allowed"
+    });
   }
 
-  let reply=await gemini(message);
+  try {
 
-  db[key]=reply;
-  saveDB(db);
+    const { message } = req.body;
 
-  res.json({reply});
+    if (!message) {
+      return res.status(400).json({
+        reply: "Please enter a message."
+      });
+    }
+
+    // ===== Local Knowledge =====
+
+    const text = message.toLowerCase();
+
+    if (text.includes("your name")) {
+      return res.status(200).json({
+        reply: "My name is Ashish AI Studio."
+      });
+    }
+
+    if (text.includes("who made you")) {
+      return res.status(200).json({
+        reply: "I was created by Ashish Kumar."
+      });
+    }
+
+    if (text.includes("hello") || text.includes("hi")) {
+      return res.status(200).json({
+        reply: "Hello 👋 Welcome to Ashish AI Studio."
+      });
+    }
+
+    // ===== Gemini API =====
+
+    const apiKey = process.env.GEMINI_API_KEY;
+
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: message
+                }
+              ]
+            }
+          ]
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      return res.status(response.status).json({
+        reply: data?.error?.message || "Gemini API Error"
+      });
+    }
+
+    const reply =
+      data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+      "Sorry, I couldn't generate a response.";
+
+    return res.status(200).json({
+      reply
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    return res.status(500).json({
+      reply: "Internal Server Error"
+    });
+
+  }
+
 }
