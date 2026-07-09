@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   try {
     const { message } = req.body;
     if (!message) {
-      return res.status(400).json({ reply: 'Please enter a search query.' });
+      return res.status(400).json({ reply: 'Please enter a message.' });
     }
 
     const jsonPath = path.join(process.cwd(), 'data', 'knowledge.json');
@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     if (match) {
       return res.status(200).json({ reply: match.answer });
     } else {
-      return res.status(200).json({ reply: 'Sorry, no information found for that query.' });
+      return res.status(200).json({ reply: 'Sorry, I couldn\'t find any information for that.' });
     }
 
   } catch (error) {
@@ -30,4 +30,3 @@ export default async function handler(req, res) {
     return res.status(500).json({ reply: 'Internal Server Error' });
   }
 }
-
